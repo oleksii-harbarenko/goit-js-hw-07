@@ -15,6 +15,8 @@ function createBoxes() {
   const amount = Number(myInput.value);
   if (amount >= 1 && amount <= 100) {
     destroyBoxes();
+    const boxes = [];
+
     let size = 30;
 
     for (let i = 0; i < amount; i++) {
@@ -22,9 +24,10 @@ function createBoxes() {
       box.style.width = `${size}px`;
       box.style.height = `${size}px`;
       box.style.backgroundColor = getRandomHexColor();
-      myBoxes.appendChild(box);
+      boxes.push(box);
       size += 10;
     }
+    myBoxes.append(...boxes);
     myInput.value = "";
   } else {
     alert("Введіть значення від 1 до 100!");
